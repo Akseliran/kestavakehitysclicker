@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Energy Clicker</title>
+</head>
+<body>
+  <h1>Energy: <span id="energy">0</span></h1>
+
+  <button id="clickBtn">Click me!</button>
+  <button id="upgradeBtn">Buy upgrade</button>
+
+  <p id="message"></p>
+
+  <script>
+    const energyEl = document.getElementById("energy");
+    const messageEl = document.getElementById("message");
+
+    async function refreshStatus() {
+      const res = await fetch("/status");
+      const data = await res.json();
+      energyEl.textContent = data.energy.toFixed(1);
+    }
+
+    document.getElementById("clickBtn").addEventListener("click", async () => {
+      const res = await fetch("/click");
+      const data = await res.json();
+      energyEl.textContent = data.energy.toFixed(1);
+    });
+
+    document.getElementById("upgradeBtn").addEventListener("click", async () => {
+      const res = await fetch("/upgrade");
+      const text = await res.json();
+      messageEl.textContent = text;
+      refreshStatus();
+    });
+
+    refreshStatus(); // load the current value when the page opens
+  </script>
+</body>
+</html>
