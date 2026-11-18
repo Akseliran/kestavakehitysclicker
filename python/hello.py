@@ -13,7 +13,6 @@ game = {
     "cursorOwned4": 1,
     "cursorOwned5": 1,
     "cursorOwned6": 1
-
 }
 
 @app.route('/')
@@ -95,7 +94,7 @@ def buy_clickUpgrade6():
 
 @app.route('/eps')
 def energy_per_second(): 
-    game["energy"] += game["eps"]
+    game["energy"] += game["eps"]/100
     return jsonify(energy=game["energy"])
 
 @app.route("/status")

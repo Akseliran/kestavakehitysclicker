@@ -31,7 +31,7 @@
       const res = await fetch("/eps");
       const data = await res.json();
       energyEl.textContent = data.energy.toFixed(1);
-    }, 1000);
+    }, 10);
 
     document.getElementById("clickBtn").addEventListener("click", async () => {
       const res = await fetch("/click");
