@@ -7,7 +7,13 @@ game = {
     "click_power": 1,
     "cursorUpgrades": 1,
     "eps": 0,
-    "cursorOwned": 1
+    "cursorOwned": 1,
+    "cursorOwned2": 1,
+    "cursorOwned3": 1,
+    "cursorOwned4": 1,
+    "cursorOwned5": 1,
+    "cursorOwned6": 1
+
 }
 
 @app.route('/')
@@ -23,13 +29,74 @@ def click():
 @app.route('/upgrade')
 def buy_clickUpgrade():
     price = 10 * 1.15**game["cursorOwned"]
-    if game["energy"] >= price:   # >= so exact amount works
+    if game["energy"] >= price:
         game["energy"] -= price
         game["cursorOwned"] += 1
-        game["cursorUpgrades"] *= 1.05
+        game["eps"]  += 0.1
         return jsonify(f"You bought an upgrade! Now you have {game['cursorOwned']} of them!")
     else:
         return jsonify("You don't have enough energy to buy that!")
+    
+@app.route('/upgrade2')
+def buy_clickUpgrade2():
+    price = 100 * 1.15**game["cursorOwned2"]
+    if game["energy"] >= price:
+        game["energy"] -= price
+        game["cursorOwned2"] += 1
+        game["eps"]  += 1
+        return jsonify(f"You bought an upgrade! Now you have {game['cursorOwned']} of them!")
+    else:
+        return jsonify("You don't have enough energy to buy that!")
+
+@app.route('/upgrade3')
+def buy_clickUpgrade3():
+    price = 1000 * 1.15**game["cursorOwned3"]
+    if game["energy"] >= price:
+        game["energy"] -= price
+        game["cursorOwned3"] += 1
+        game["eps"]  += 10
+        return jsonify(f"You bought an upgrade! Now you have {game['cursorOwned']} of them!")
+    else:
+        return jsonify("You don't have enough energy to buy that!")
+
+@app.route('/upgrade4')
+def buy_clickUpgrade4():
+    price = 10000 * 1.15**game["cursorOwned4"]
+    if game["energy"] >= price:
+        game["energy"] -= price
+        game["cursorOwned4"] += 1
+        game["eps"]  += 100
+        return jsonify(f"You bought an upgrade! Now you have {game['cursorOwned']} of them!")
+    else:
+        return jsonify("You don't have enough energy to buy that!")
+
+@app.route('/upgrade5')
+def buy_clickUpgrade5():
+    price = 100000 * 1.15**game["cursorOwned5"]
+    if game["energy"] >= price:
+        game["energy"] -= price
+        game["cursorOwned5"] += 1
+        game["eps"]  += 1000
+        return jsonify(f"You bought an upgrade! Now you have {game['cursorOwned']} of them!")
+    else:
+        return jsonify("You don't have enough energy to buy that!")
+
+@app.route('/upgrade6')
+def buy_clickUpgrade6():
+    price = 1000000 * 1.15**game["cursorOwned6"]
+    if game["energy"] >= price:
+        game["energy"] -= price
+        game["cursorOwned6"] += 1
+        game["eps"]  += 10000
+        return jsonify(f"You bought an upgrade! Now you have {game['cursorOwned']} of them!")
+    else:
+        return jsonify("You don't have enough energy to buy that!")
+
+
+@app.route('/eps')
+def energy_per_second(): 
+    game["energy"] += game["eps"]
+    return jsonify(energy=game["energy"])
 
 @app.route("/status")
 def checkStatus():

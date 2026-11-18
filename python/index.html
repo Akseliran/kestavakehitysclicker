@@ -8,7 +8,12 @@
   <h1>Energy: <span id="energy">0</span></h1>
 
   <button id="clickBtn">Click me!</button>
-  <button id="upgradeBtn">Buy upgrade</button>
+  <button id="upgradeBtn">Buy upgrade1</button>
+  <button id="upgradeBtn2">Buy upgrade2</button>
+  <button id="upgradeBtn3">Buy upgrade3</button>
+  <button id="upgradeBtn4">Buy upgrade4</button>
+  <button id="upgradeBtn5">Buy upgrade5</button>
+  <button id="upgradeBtn6">Buy upgrade6</button>
 
   <p id="message"></p>
 
@@ -22,6 +27,12 @@
       energyEl.textContent = data.energy.toFixed(1);
     }
 
+    setInterval(async () => {
+      const res = await fetch("/eps");
+      const data = await res.json();
+      energyEl.textContent = data.energy.toFixed(1);
+    }, 1000);
+
     document.getElementById("clickBtn").addEventListener("click", async () => {
       const res = await fetch("/click");
       const data = await res.json();
@@ -30,6 +41,36 @@
 
     document.getElementById("upgradeBtn").addEventListener("click", async () => {
       const res = await fetch("/upgrade");
+      const text = await res.json();
+      messageEl.textContent = text;
+      refreshStatus();
+    });
+        document.getElementById("upgradeBtn2").addEventListener("click", async () => {
+      const res = await fetch("/upgrade2");
+      const text = await res.json();
+      messageEl.textContent = text;
+      refreshStatus();
+    });
+        document.getElementById("upgradeBtn3").addEventListener("click", async () => {
+      const res = await fetch("/upgrade3");
+      const text = await res.json();
+      messageEl.textContent = text;
+      refreshStatus();
+    });
+        document.getElementById("upgradeBtn4").addEventListener("click", async () => {
+      const res = await fetch("/upgrade4");
+      const text = await res.json();
+      messageEl.textContent = text;
+      refreshStatus();
+    });
+        document.getElementById("upgradeBtn5").addEventListener("click", async () => {
+      const res = await fetch("/upgrade5");
+      const text = await res.json();
+      messageEl.textContent = text;
+      refreshStatus();
+    });
+        document.getElementById("upgradeBtn6").addEventListener("click", async () => {
+      const res = await fetch("/upgrade6");
       const text = await res.json();
       messageEl.textContent = text;
       refreshStatus();
