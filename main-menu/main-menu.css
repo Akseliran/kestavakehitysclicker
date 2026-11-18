@@ -1,0 +1,69 @@
+html {
+    font-family: "ABeeZee", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+div {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(155, 160, 234);
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, bisque, rgb(179, 145, 102));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 3rem;
+    padding-left: 16rem;
+    padding-right: 16rem;
+}
+
+div p {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #1E2440;
+    margin-top: 0;
+    margin-bottom: 35px;
+    letter-spacing: 0.3px;
+}
+
+button:hover {
+    background-position: 0% 100%;
+}
+
+button {
+    font-size: 26px;
+    font-weight: 400;
+    background-image: linear-gradient(to bottom right, bisque, rgb(179, 145, 102));
+    background-size: 100% 200%;
+    background-position: 0% 0%;
+    padding: 1rem;
+    color: #1E1E24;
+    cursor: pointer;
+    transition: background-position 0.3s ease;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+h1 {
+    padding-bottom: 2rem;
+    color: #1E1E24;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #12195C;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+}
+
+#start-btn {
+    margin-bottom: 1rem;
+}
+
+#load-btn {
+    margin-bottom: 1rem;
+}
