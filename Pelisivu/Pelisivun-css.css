@@ -1,0 +1,10 @@
+.paivitykset{
+display: grid;
+justify-content: flex-end;
+align-items: flex-start;
+padding: 20px;
+}
+.paivitys{
+padding: 20px;
+background-color:aquamarine
+}
