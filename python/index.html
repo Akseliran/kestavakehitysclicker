@@ -2,6 +2,42 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <style>
+  .hidden { display: none; }
+
+  #settingsBTN{
+    width: 2rem;
+    height: 2rem;
+
+  }
+  #settings{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    width: 20rem;
+    align-items: center;
+  }
+
+  #settings-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #222;
+    color: white;
+    padding: 0 10px;
+    height: 2rem;
+    border-radius: 6px;
+
+    .button{
+      width: 7rem;
+    }
+  }
+  #settings-menu.hidden {
+  display: none;
+}
+
+</style>
   <title>Energy Clicker</title>
 </head>
 <body>
@@ -15,9 +51,19 @@
   <button id="upgradeBtn5">Buy upgrade5</button>
   <button id="upgradeBtn6">Buy upgrade6</button>
 
-
+<div id="settings">
+  <button id="settingsBTN">Settings</button>
+  <div id="settings-menu" class="hidden">
+    <button id="save" class="button"> save game</button>
+    <button id="load" class="button"> load game</button>
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange"> Volume
+  </div>
+</div>
   <p id="message"></p>
 
     <script src="/static/game.js"></script>
+    <script src="/static/settings.js"></script>
+
+
 </body>
 </html>

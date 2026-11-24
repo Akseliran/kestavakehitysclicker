@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, request, send_from_directory, jsonify
 
 app = Flask(__name__)
 
@@ -15,9 +15,28 @@ game = {
     "cursorOwned6": 1
 }
 
+
+
+
 @app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
+
+@app.route("/save")
+def save():
+    return jsonify(game)
+
+@app.route("/load", methods=["POST"])
+def load():
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify("Invalid save file"), 400
+
+    for key, value in data.items():
+        if key in game and isinstance(value, (int, float)) and isinstance(game[key], (int, float)):
+            game[key] = value
+
+    return jsonify("Game loaded")
 
 @app.route('/click')
 def click():
