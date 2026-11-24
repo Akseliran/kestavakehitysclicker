@@ -1,3 +1,6 @@
+//Nää on tehty chatgpt
+
+
 
 const shop = document.getElementById("shop");
 const shopToggle = document.getElementById("shop-toggle");
