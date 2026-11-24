@@ -1,25 +1,47 @@
+
 html {
     font-family: "ABeeZee", sans-serif;
     font-weight: 400;
     font-style: normal;
+    min-height: 100%;
 }
 
-div {
+body {
+    margin: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    /* Background */
+    background-color: #52B05B;
+
+    background-image:
+        url("img/background_landscape.png"),
+        linear-gradient(
+            to bottom,
+            #58BEEB 0%,
+            #58BEEB 50%,
+            #52B05B 50%,
+            #52B05B 100%
+        );
+
+    background-size: 120% auto, 100% 100%;
+    background-position: center center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+
+    /* Center menu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-menu {
     display: grid;
     align-items: center;
     justify-content: center;
     background-color: rgb(155, 160, 234);
     padding: 3rem;
     border-radius: 10px;
-}
-
-body {
-    background-image: linear-gradient(to bottom right, bisque, rgb(179, 145, 102));
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 3rem;
-    padding-left: 16rem;
-    padding-right: 16rem;
 }
 
 div p {
