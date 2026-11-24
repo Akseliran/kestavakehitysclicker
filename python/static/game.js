@@ -61,7 +61,7 @@ loadBtn.addEventListener("drop", (e) => {
       const res = await fetch("/eps");
       const data = await res.json();
       energyEl.textContent = data.energy.toFixed(1);
-    }, 10);
+    }, 11);
 
     document.getElementById("clickBtn").addEventListener("click", async () => {
       const res = await fetch("/click");
