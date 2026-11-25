@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +14,25 @@
 
     <!-- Päävalikko -->
     <div id="main-menu">
-    <h1>Kestäväkehitys Clicker</h1>
-    <p>Paina aloita uusi peli aloittaaksesi pelin</p>
-    <div class="menu-buttons">
-        <button id="start-btn">Aloita Uusi Peli</button>
-        <button id="load-btn">Jatka Peliä</button>
-        <button id="options">Asetukset</button>
+        <h1>Kestäväkehitys Clicker</h1>
+        <p>Paina aloita uusi peli aloittaaksesi pelin</p>
+        <div class="menu-buttons">
+            <button id="start-btn">Aloita Uusi Peli</button>
+            <button id="load-btn">Jatka Peliä</button>
+            <button id="options">Asetukset</button>
+        </div>
+        <p id="menu-message"></p>
+        <!-- Piilotettu tiedostovalitsin tallennuksen lataamista varten -->
+        <input type="file" id="load-file" accept=".json,application/json" hidden>
     </div>
 
+    <!-- Asetukset -->
+    <div id="options-menu" class="hidden">
+        <h2>Asetukset</h2>
+        <label for="volume">Äänenvoimakkuus: <span id="volume-value">50</span></label>
+        <input type="range" id="volume" min="0" max="100" value="50">
+        <button id="options-back">Takaisin</button>
+    </div>
 
 </body>
 </html>

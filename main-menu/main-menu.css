@@ -88,3 +88,40 @@ h1 {
     flex-direction: column;
     gap: 1rem; /* nappien väli, säädä mieleiseksesi */
 }
+
+.hidden {
+    display: none !important;
+}
+
+#menu-message {
+    margin: 1.5rem 0 0;
+    font-size: 0.8rem;
+    color: #8B2E1E;
+    min-height: 1em;
+}
+
+#options-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: rgba(247, 243, 232, 0.75);
+    padding: 5rem;
+    border-radius: 10px;
+    color: #1E3524;
+    text-align: center;
+}
+
+#options-menu h2 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+}
+
+#options-menu label {
+    font-size: 1rem;
+}
+
+#options-menu input[type="range"] {
+    width: 100%;
+    accent-color: #52B05B;
+    cursor: pointer;
+}
