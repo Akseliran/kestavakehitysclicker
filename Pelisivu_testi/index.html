@@ -10,7 +10,13 @@
 </head>
 <body>
 
-    <!-- Shop toggle button -->
+<div class="energy-display">
+    Energy: <span id="energy">0.0</span>
+</div>
+
+<p id="message"></p>
+
+    <!-- Shop toggle nappi -->
     <button id="shop-toggle">Kauppa ◀</button>
 
     <!-- Upgrade shop -->
@@ -20,38 +26,45 @@
 
         <div class="grid-container">
 
-            <div class="paivitys upgradeBtn">
+            <div class="paivitys">
                 <span>eka</span>
                 <span>10</span>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" id="upgradeBtn">Buy</button>
                 <span class="buy-count">0 ostettu</span>
             </div>
 
-            <div class="paivitys upgradeBtn2" >
+            <div class="paivitys">
                 <span>toinen</span>
                 <span>100</span>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" id="upgradeBtn2">Buy</button>
                 <span class="buy-count">0 ostettu</span>
             </div>
 
-            <div class="paivitys upgradeBtn3">
+            <div class="paivitys">
                 <span>kolmas</span>
                 <span>500</span>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" id="upgradeBtn3">Buy</button>
                 <span class="buy-count">0 ostettu</span>
             </div>
 
-            <div class="paivitys upgradeBtn4">
+            <div class="paivitys">
                 <span>neljäs</span>
                 <span>1000</span>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" id="upgradeBtn4">Buy</button>
                 <span class="buy-count">0 ostettu</span>
             </div>
 
-            <div class="paivitys upgradeBtn5">
-                <span>viies</span>
+            <div class="paivitys">
+                <span>viides</span>
                 <span>2500</span>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" id="upgradeBtn5">Buy</button>
+                <span class="buy-count">0 ostettu</span>
+            </div>
+
+            <div class="paivitys">
+                <span>kuudes</span>
+                <span>5000</span>
+                <button class="buy-btn" id="upgradeBtn6">Buy</button>
                 <span class="buy-count">0 ostettu</span>
             </div>
 
@@ -60,7 +73,10 @@
     </section>
 
     <!-- Main button -->
-    <button class="Nappi" id="main-button">Nappula</button>
+    <div class="charge-bar"><div class="charge-fill" id="charge-fill"></div></div>
+    <p id="eps-display" class="eps-display">0 energy/s</p>
+
+    <button class="Nappi" id="main-button">Luo energiaa</button>
 
 </body>
 </html>
