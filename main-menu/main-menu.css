@@ -1,6 +1,6 @@
 
 html {
-    font-family: "ABeeZee", sans-serif;
+    font-family: 'Press Start 2P', monospace;
     font-weight: 400;
     font-style: normal;
     min-height: 100%;
@@ -39,53 +39,89 @@ body {
     display: grid;
     align-items: center;
     justify-content: center;
-    background-color: rgb(155, 160, 234);
-    padding: 3rem;
+    background-color: rgba(247, 243, 232, 0.75);
+    padding: 5rem;
     border-radius: 10px;
 }
 
 div p {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    color: #1E2440;
+    color: #3D3124;
     margin-top: 0;
     margin-bottom: 35px;
     letter-spacing: 0.3px;
 }
 
 button:hover {
-    background-position: 0% 100%;
+    background-color: #A1CE63;
 }
 
 button {
     font-size: 26px;
     font-weight: 400;
-    background-image: linear-gradient(to bottom right, bisque, rgb(179, 145, 102));
-    background-size: 100% 200%;
-    background-position: 0% 0%;
+    background-color: #8EC056;
     padding: 1rem;
     color: #1E1E24;
     cursor: pointer;
-    transition: background-position 0.3s ease;
+    transition: background-color 0.3s ease;
     border: 1px solid black;
     border-radius: 6px;
+
+    font-family: 'Press Start 2P', monospace;
+    font-style: normal;
+    min-height: 100%;
 }
 
 h1 {
     padding-bottom: 2rem;
-    color: #1E1E24;
+    color: #1E3524;
     font-size: 2.6rem;
     font-weight: 800;
-    color: #12195C;
     letter-spacing: -0.5px;
     margin-bottom: 10px;
 }
 
-#start-btn {
-    margin-bottom: 1rem;
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* nappien väli, säädä mieleiseksesi */
 }
 
-#load-btn {
-    margin-bottom: 1rem;
+.hidden {
+    display: none !important;
+}
+
+#menu-message {
+    margin: 1.5rem 0 0;
+    font-size: 0.8rem;
+    color: #8B2E1E;
+    min-height: 1em;
+}
+
+#options-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: rgba(247, 243, 232, 0.75);
+    padding: 5rem;
+    border-radius: 10px;
+    color: #1E3524;
+    text-align: center;
+}
+
+#options-menu h2 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+}
+
+#options-menu label {
+    font-size: 1rem;
+}
+
+#options-menu input[type="range"] {
+    width: 100%;
+    accent-color: #52B05B;
+    cursor: pointer;
 }

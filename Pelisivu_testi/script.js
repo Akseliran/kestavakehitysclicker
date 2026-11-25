@@ -1,55 +1,96 @@
-//Nää on tehty chatgpt
 
+const energyEl = document.getElementById("energy");
+const messageEl = document.getElementById("message");
 
+// Update energy display
+const chargeFill = document.getElementById("charge-fill");
+const epsEl = document.getElementById("eps-display");
 
+function updateCharge(data) {
+    const pct = data.charge_max ? (data.charge_left / data.charge_max) * 100 : 0;
+    chargeFill.style.width = pct + "%";
+}
+
+async function refreshStatus() {
+    try {
+        const res = await fetch("/status");
+        if (!res.ok) throw new Error("Status request failed");
+
+        const data = await res.json();
+        energyEl.textContent = Number(data.energy).toFixed(1);
+        epsEl.textContent = data.charge_left > 0
+            ? data.eps + " energy/s"
+            : "Not charged - click to crank!";
+        updateCharge(data);
+    } catch (err) {
+        console.error("Could not update energy:", err);
+    }
+}
+
+// Open and close shop
 const shop = document.getElementById("shop");
 const shopToggle = document.getElementById("shop-toggle");
 
-// Open and close shop
 shopToggle.addEventListener("click", function() {
-
     shop.classList.toggle("open");
     shopToggle.classList.toggle("open");
 
-    if (shop.classList.contains("open")) {
-        shopToggle.textContent = "Sulje ▶";
-    } else {
-        shopToggle.textContent = "Päivitykset ◀";
-    }
-
+    shopToggle.textContent = shop.classList.contains("open")
+        ? "Sulje ▶"
+        : "Kauppa ◀";
 });
 
-// Buy upgrades
-const buyButtons = document.querySelectorAll(".buy-btn");
+// Upgrade buttons
+const upgrades = [
+    { id: "upgradeBtn", endpoint: "/upgrade" },
+    { id: "upgradeBtn2", endpoint: "/upgrade2" },
+    { id: "upgradeBtn3", endpoint: "/upgrade3" },
+    { id: "upgradeBtn4", endpoint: "/upgrade4" },
+    { id: "upgradeBtn5", endpoint: "/upgrade5" },
+    { id: "upgradeBtn6", endpoint: "/upgrade6" }
+];
 
-buyButtons.forEach(function(button) {
+upgrades.forEach(function(upgrade) {
+    const button = document.getElementById(upgrade.id);
 
-    let purchases = 0;
+    if (!button) return;
 
-    button.addEventListener("click", function() {
+    button.addEventListener("click", async function() {
+        try {
+            const res = await fetch(upgrade.endpoint);
+            const data = await res.json();
 
-        // Register purchase
-        purchases++;
+            messageEl.textContent =
+                typeof data === "string" ? data : data.message || "";
 
-        // Update purchase counter
-        const counter = button.parentElement.querySelector(".buy-count");
-
-        counter.textContent = purchases + " ostettu";
-
-        console.log(
-            "Upgrade:",
-            button.parentElement.querySelector("span").textContent,
-            "Total purchases:",
-            purchases
-        );
-
+            await refreshStatus();
+        } catch (err) {
+            messageEl.textContent = "Upgrade failed!";
+            console.error(err);
+        }
     });
-
 });
 
-// Main button
+// Main energy button
 const mainButton = document.getElementById("main-button");
 
-mainButton.addEventListener("click", function() {
-    console.log("Nappula clicked!");
+mainButton.addEventListener("click", async function() {
+    try {
+        const res = await fetch("/click");
+        if (!res.ok) throw new Error("Click request failed");
+
+        const data = await res.json();
+
+        energyEl.textContent = Number(data.energy).toFixed(1);
+        updateCharge(data);
+    } catch (err) {
+        messageEl.textContent = "Could not generate energy!";
+        console.error(err);
+    }
 });
+
+// Automatically update energy
+setInterval(refreshStatus, 250);
+
+// Initial energy
+refreshStatus();

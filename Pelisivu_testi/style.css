@@ -175,3 +175,64 @@ body::before {
 .Nappi:hover {
     background-color: goldenrod;
 }
+
+.energy-display {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 15px 25px;
+
+    background-color: rgba(38, 56, 47, 0.9);
+    border: 2px solid #D6A84B;
+    border-radius: 10px;
+
+    color: #F1E6C8;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#message {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #F1E6C8;
+    background-color: rgba(0, 0, 0, 0.622);
+
+    padding: 10px 20px; /* Makes the background bigger */
+    border: 1px solid rgba(241, 230, 200, 0.5);
+    border-radius: 5px; /* Rounded corners */
+
+    font-size: 16px;
+}
+
+.charge-bar {
+    position: absolute;
+    top: calc(50% + 90px);
+    left: 40%;
+    width: 100px;
+    height: 12px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #D6A84B;
+
+}
+
+.charge-fill {
+    width: 0%;
+    height: 100%;
+    background-color: gold;
+    transition: width 0.25s linear;
+}
+
+.eps-display {
+    position: absolute;
+    top: calc(50% + 110px);
+    left: 40%;
+    margin: 0;
+    font-size: 14px;
+    color: #F1E6C8;
+}
