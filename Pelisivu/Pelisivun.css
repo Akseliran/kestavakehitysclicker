@@ -30,29 +30,55 @@ border:2px groove black;
 width: 200px;
 }
 
-.Nappi{
+.paivitys:hover{
+    background-color: cadetblue;
+}
+.nappi{
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     top: 45%;
-    left: 40%;
+    left: 45%;
     width: 100px;
     height: 75px;
     font-size: 15px;
     background-color: gold;
     cursor: pointer;
 }
-.Nappi:hover{ 
+.nappi:hover{ 
     background-color: goldenrod;
 
 }
 .tausta{
     position: fixed;
     z-index: -1;
+    inset: 0;
 }
 .tausta img{
     max-width:100%;
     max-height: 100%;
-
+    object-fit: cover;
 }
+.energia_boxi{
+    background-color:aquamarine;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 2%;
+    left: 45%;
+    width: 100px;
+    height: 90px;
+}
+.energia{
+font-size:medium;
+}
+.maara{
+    border-bottom: 2px solid black;
+}
+.energiaps{
+font-size: smaller;
+}
+
