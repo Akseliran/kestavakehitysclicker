@@ -1,4 +1,5 @@
 from flask import Flask, request, send_from_directory, jsonify
+import time
 
 app = Flask(__name__)
 
@@ -12,10 +13,32 @@ game = {
     "cursorOwned3": 1,
     "cursorOwned4": 1,
     "cursorOwned5": 1,
-    "cursorOwned6": 1
+    "cursorOwned6": 1,
+    "last_update": time.monotonic()
 }
 
+def tick():
+    now = time.monotonic()
+    elapsed = now - game["last_update"]
+    game["energy"] += game["eps"]*elapsed
+    game["last_update"] = now
 
+def new_game():
+    return {
+        "energy": 0.0,
+        "click_power": 1,
+        "cursorUpgrades": 1,
+        "eps": 0,
+        "cursorOwned": 1,
+        "cursorOwned2": 1,
+        "cursorOwned3": 1,
+        "cursorOwned4": 1,
+        "cursorOwned5": 1,
+        "cursorOwned6": 1,
+        "last_update": time.monotonic()
+    }
+
+game = new_game()
 
 
 @app.route('/')
@@ -33,19 +56,29 @@ def load():
         return jsonify("Invalid save file"), 400
 
     for key, value in data.items():
+        if key == "last_update":
+            continue
         if key in game and isinstance(value, (int, float)) and isinstance(game[key], (int, float)):
             game[key] = value
 
     return jsonify("Game loaded")
 
+@app.route("/reset", methods=["POST"])
+def reset():
+    game.clear()
+    game.update(new_game())
+    return jsonify("Game reset")
+
 @app.route('/click')
 def click():
+    tick()
     gain = game["click_power"] + game["eps"] * 0.1 * game["cursorUpgrades"]
     game["energy"] += gain
     return jsonify(energy=game["energy"])
 
 @app.route('/upgrade')
 def buy_clickUpgrade():
+    tick()
     price = 10 * 1.15**game["cursorOwned"]
     if game["energy"] >= price:
         game["energy"] -= price
@@ -57,6 +90,7 @@ def buy_clickUpgrade():
     
 @app.route('/upgrade2')
 def buy_clickUpgrade2():
+    tick()
     price = 100 * 1.15**game["cursorOwned2"]
     if game["energy"] >= price:
         game["energy"] -= price
@@ -68,6 +102,7 @@ def buy_clickUpgrade2():
 
 @app.route('/upgrade3')
 def buy_clickUpgrade3():
+    tick()
     price = 1000 * 1.15**game["cursorOwned3"]
     if game["energy"] >= price:
         game["energy"] -= price
@@ -79,6 +114,7 @@ def buy_clickUpgrade3():
 
 @app.route('/upgrade4')
 def buy_clickUpgrade4():
+    tick()
     price = 10000 * 1.15**game["cursorOwned4"]
     if game["energy"] >= price:
         game["energy"] -= price
@@ -90,6 +126,7 @@ def buy_clickUpgrade4():
 
 @app.route('/upgrade5')
 def buy_clickUpgrade5():
+    tick()
     price = 100000 * 1.15**game["cursorOwned5"]
     if game["energy"] >= price:
         game["energy"] -= price
@@ -101,6 +138,7 @@ def buy_clickUpgrade5():
 
 @app.route('/upgrade6')
 def buy_clickUpgrade6():
+    tick()
     price = 1000000 * 1.15**game["cursorOwned6"]
     if game["energy"] >= price:
         game["energy"] -= price
@@ -113,11 +151,12 @@ def buy_clickUpgrade6():
 
 @app.route('/eps')
 def energy_per_second(): 
-    game["energy"] += game["eps"]/100
+    tick()
     return jsonify(energy=game["energy"])
 
 @app.route("/status")
 def checkStatus():
+    tick()
     return jsonify(game)
 
 if __name__ == '__main__':
