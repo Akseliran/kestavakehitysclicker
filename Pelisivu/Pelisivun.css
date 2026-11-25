@@ -1,7 +1,8 @@
 body{
     background-color:darkgrey
 }
-
+*{font-family: 'Press Start 2P', monospace;}
+*{font-size: 100%}
 .paivitykset{
 position:fixed;
 display: flex;
@@ -21,9 +22,9 @@ justify-content: center;
 }
 .paivitys{
 display: flex;
-padding: 20px;
+padding: 15px;
 margin: 5px;
-font-size:15px;
+font-size:10px;
 flex-direction: column;
 background-color:aquamarine;
 border:2px groove black;
@@ -50,6 +51,7 @@ width: 200px;
     background-color: goldenrod;
 
 }
+/*taustakuva pitää vielä korjata, päivitykset oksentaa vähä yli*/
 .tausta{
     position: fixed;
     z-index: -1;
@@ -73,12 +75,12 @@ width: 200px;
     height: 90px;
 }
 .energia{
-font-size:medium;
+font-size:smaller;
 }
 .maara{
     border-bottom: 2px solid black;
 }
 .energiaps{
-font-size: smaller;
+font-size: xx-small;
 }
 
