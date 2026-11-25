@@ -14,14 +14,14 @@ const aaniTeksti = document.getElementById("volume-value");
 
 // Aloita uusi peli
 aloitaNappi.addEventListener("click", function () {
-    localStorage.removeItem("saveData"); // poistetaan vanha tallennus
+    localStorage.removeItem("saveData");
     window.location.href = "../Pelisivu_testi/index.html";
 });
 
 
 // Jatka peliä
 jatkaNappi.addEventListener("click", function () {
-    tiedosto.click(); // avaa tiedoston valinnan
+    tiedosto.click();
 });
 
 tiedosto.addEventListener("change", function () {
@@ -32,7 +32,7 @@ tiedosto.addEventListener("change", function () {
         try {
             const data = JSON.parse(lukija.result);
             localStorage.setItem("saveData", JSON.stringify(data));
-            window.location.href = "../Pelisivu/Pelisivun.html?continue=1";
+            window.location.href = "../Pelisivu_testi/index.html?continue=1";
         } catch (error) {
             viesti.textContent = "Tallennustiedostoa ei voitu lukea";
         }
