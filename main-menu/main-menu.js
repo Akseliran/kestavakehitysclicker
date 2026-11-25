@@ -15,7 +15,7 @@ const aaniTeksti = document.getElementById("volume-value");
 // Aloita uusi peli
 aloitaNappi.addEventListener("click", function () {
     localStorage.removeItem("saveData"); // poistetaan vanha tallennus
-    window.location.href = "../Pelisivu/Pelisivun.html";
+    window.location.href = "../Pelisivu_testi/index.html";
 });
 
 
