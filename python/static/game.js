@@ -1,5 +1,6 @@
     const energyEl = document.getElementById("energy");
     const messageEl = document.getElementById("message");
+    const tabName = document.getElementById("title")
 
     async function refreshStatus() {
       const res = await fetch("/status");
@@ -39,6 +40,8 @@ async function loadFromFile(file) {
   }
 }
 
+
+
 const loadBtn = document.getElementById("load");
 const fileInput = document.createElement("input");
 fileInput.type = "file";
@@ -62,6 +65,13 @@ loadBtn.addEventListener("drop", (e) => {
       const data = await res.json();
       energyEl.textContent = data.energy.toFixed(1);
     }, 11);
+
+    setInterval(async()=>{
+      const res = await fetch("/eps");
+      const data = await res.json();
+      const energyTitle = data.energy.toFixed(1)
+      tabName.textContent = energyTitle + "W - Energy Clicker"
+    }, 1000);
 
     document.getElementById("clickBtn").addEventListener("click", async () => {
       const res = await fetch("/click");
@@ -103,6 +113,13 @@ loadBtn.addEventListener("drop", (e) => {
       const res = await fetch("/upgrade6");
       const text = await res.json();
       messageEl.textContent = text;
+      refreshStatus();
+    });
+
+      document.getElementById("reset").addEventListener("click", async () => {
+    if (!confirm("Reset the game? This deletes all progress.")) return;
+      const res = await fetch("/reset", { method: "POST" });
+      messageEl.textContent = await res.json();
       refreshStatus();
     });
 
